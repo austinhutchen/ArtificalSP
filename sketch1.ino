@@ -1,28 +1,15 @@
-/*
-  APDS-9960 - All sensor data from APDS-9960
-
-  This example reads all data from the on-board APDS-9960 sensor of the
-  Nano 33 BLE Sense:
-   - color RGB (red, green, blue)
-   - proximity
-   - gesture
-  and prints updates to the Serial Monitor every 100 ms.
-
-  The circuit:
-  - Arduino Nano 33 BLE Sense
-
-  This example code is in the public domain.
-*/
 
 #include <Arduino_APDS9960.h>
 
 void setup() {
   Serial.begin(9600);
-  while (!Serial); // Wait for Serial Monitor to open
+  while (!Serial)
+    ; // Wait for Serial Monitor to open
 
   if (!APDS.begin()) {
     Serial.println("Error initializing APDS-9960 sensor.");
-    while (true); // Stop forever
+    while (true)
+      ; // Stop forever
   }
 }
 
@@ -41,29 +28,33 @@ void loop() {
   if (APDS.gestureAvailable()) {
     int gesture = APDS.readGesture();
     switch (gesture) {
-      case GESTURE_UP:
-        Serial.println("Detected UP gesture");
-        break;
+    case GESTURE_UP:
+      Serial.println("Detected UP gesture");
+      break;
 
-      case GESTURE_DOWN:
-        Serial.println("Detected DOWN gesture");
-        break;
+    case GESTURE_DOWN:
+      Serial.println("Detected DOWN gesture");
+      break;
 
-      case GESTURE_LEFT:
-        Serial.println("Detected LEFT gesture");
-        break;
+    case GESTURE_LEFT:
+      Serial.println("Detected LEFT gesture");
+      break;
 
-      case GESTURE_RIGHT:
-        Serial.println("Detected RIGHT gesture");
-        break;
+    case GESTURE_RIGHT:
+      Serial.println("Detected RIGHT gesture");
+      break;
 
-      default:
-        // Ignore
-        break;
+    default:
+      // Ignore
+      break;
     }
   }
+  if(!APDS.gestureAvailable()){
+  Serial.println("Gestures not properly enabled.");
+  }
+  
 
-  // Check if a color reading is available
+ // Check if a color reading is available
   if (APDS.colorAvailable()) {
     APDS.readColor(r, g, b);
   }
