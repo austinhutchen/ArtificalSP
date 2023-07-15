@@ -49,9 +49,8 @@ void loop() {
       break;
     }
   }
-  if(!APDS.gestureAvailable()){
-  Serial.println("Gestures not properly enabled.");
-  }
+  
+
   
 
  // Check if a color reading is available
