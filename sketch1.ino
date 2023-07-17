@@ -34,6 +34,7 @@ void setup() {
   //APDS.setGestureSensitivity(80);
 
   Serial.println("Detecting gestures ...");
+  APDS.setGestureSensitivity(10);
 }
 void loop() {
   if (APDS.gestureAvailable()) {
