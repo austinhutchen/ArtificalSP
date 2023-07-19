@@ -55,7 +55,7 @@ void connectToPeripheral(){
 
   do
   {
-    BLE.scanForUuid(deviceServiceUuid);
+    BLE.scan();
     peripheral = BLE.available();
   } while (!peripheral);
   
