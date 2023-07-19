@@ -38,7 +38,8 @@ void setup() {
 }
 void loop() {
   if (APDS.gestureAvailable()) {
-    // a gesture was detected, read and print to Serial Monitor
+      // a gesture was detected, read and print to Serial Monitor
+    // in the future, this will listen for audio after a GESTURE_UP, GESTURE_RIGHT combination. Other gesture combinations will do ther things. Embed switch statements accordingly.
     int gesture = APDS.readGesture();
 
     switch (gesture) {
